@@ -317,7 +317,7 @@
 
         <section id="album-tracklist">
             <div class="container">
-            <table class="table table-dark">
+            <table class="table table-dark" id="table">
                 <thead>
                   <tr>
                     <th scope="col">Track order Number</th>
@@ -327,7 +327,7 @@
                     <th></th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="table-body">
                   <tr class="table-primary">
                     <th scope="row">124215</th>
                     <td>Black Holes and Revelations</td>
@@ -414,25 +414,25 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text">Track number</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input type="text" aria-label="First name" class="form-control data">
                       </div>
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Track title</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input type="text" aria-label="First name" class="form-control data">
                       </div>
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Artist Name</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input type="text" aria-label="First name" class="form-control data">
                       </div>
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Track duration</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input type="text" aria-label="First name" class="form-control data">
                       </div>
                 </div>
                 <div class="modal-footer">
@@ -681,6 +681,29 @@
             //     addButton.addEventListener("click", add);
             // }
             window.onload = removeTrack();
+
+
+            function addRow() {
+                let data = document.querySelectorAll(".data")
+                let tableRef = document.getElementById("table-body");
+                let newRow = tableRef.insertRow();
+
+                for (let i = 0; i < 4; i++) {
+
+        let newCell = newRow.insertCell(i);
+
+        let newText = document.createTextNode(`${data[i].value}`);
+        newCell.appendChild(newText);
+            }
+            let lastCell = newRow.insertCell(4);
+            let lastText = document.createElement("button");
+            lastText.innerText = "remove";
+            lastText.className = "btn-danger"
+            lastCell.appendChild(lastText)
+            }
+
+
+         document.querySelector(".save").addEventListener("click", addRow);
 
         </script>
 
