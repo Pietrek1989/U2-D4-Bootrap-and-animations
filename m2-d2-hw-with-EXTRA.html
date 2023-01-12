@@ -669,17 +669,6 @@
             }
 
 
-            // function add(event) {
-            //     let input = document.querySelectorAll(".input-group-text");
-            //     for (const iterator of input) {
-                    
-            //     }
-            // }
-
-            // function addTrack() {
-            //     let addButton = document.querySelector(".save");
-            //     addButton.addEventListener("click", add);
-            // }
             window.onload = removeTrack();
 
 
@@ -689,18 +678,16 @@
                 let newRow = tableRef.insertRow();
 
                 for (let i = 0; i < 4; i++) {
-
-        let newCell = newRow.insertCell(i);
-
-        let newText = document.createTextNode(`${data[i].value}`);
-        newCell.appendChild(newText);
-            }
-            let lastCell = newRow.insertCell(4);
-            let lastText = document.createElement("button");
-            lastText.innerText = "remove";
-            lastText.className = "btn-danger"
-            lastCell.appendChild(lastText)
-            }
+                    let newCell = newRow.insertCell(i);
+                    let newText = document.createTextNode(`${data[i].value}`);
+                    newCell.appendChild(newText);
+                }
+                let lastCell = newRow.insertCell(4);
+                let lastText = document.createElement("button");
+                lastText.innerText = "remove";
+                lastText.className = "btn-danger"
+                lastCell.appendChild(lastText)
+                }
 
 
          document.querySelector(".save").addEventListener("click", addRow);
